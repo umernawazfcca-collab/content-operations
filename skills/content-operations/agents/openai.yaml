@@ -1,0 +1,6 @@
+interface:
+  display_name: "Content Operations"
+  short_description: "Review authorised content releases with evidence"
+  default_prompt: "Use $content-operations to review my configured release tracker, check live evidence and prepare the next approved content actions."
+policy:
+  allow_implicit_invocation: false

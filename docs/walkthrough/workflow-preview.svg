@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="t d">
+<title id="t">Content Operations release walkthrough (simulation)</title>
+<desc id="d">Original conceptual preview of seven stages: edit, approve, schedule, verify the post, comment triage, follower check and guide delivery. Exceptions hold the flow at their gate. Synthetic; nothing is sent.</desc>
+<defs><radialGradient id="g1" cx=".9" cy="0" r=".7"><stop offset="0" stop-color="#C7A968" stop-opacity=".16"/><stop offset="1" stop-color="#C7A968" stop-opacity="0"/></radialGradient>
+<radialGradient id="g2" cx="0" cy="1" r=".8"><stop offset="0" stop-color="#0E3B2E" stop-opacity=".75"/><stop offset="1" stop-color="#0E3B2E" stop-opacity="0"/></radialGradient>
+<linearGradient id="fill" x1="0" x2="1"><stop offset="0" stop-color="#5E8FA8"/><stop offset="1" stop-color="#C7A968"/></linearGradient></defs>
+<rect width="1280" height="640" fill="#05060A"/><rect width="1280" height="640" fill="url(#g1)"/><rect width="1280" height="640" fill="url(#g2)"/>
+<g font-family="'DM Sans', Inter, 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif">
+<text x="64" y="74" fill="#C7A968" font-size="15" font-weight="600" letter-spacing="3">CONTENT OPERATIONS · RELEASE WALKTHROUGH</text>
+<text x="64" y="134" fill="#F2EFE8" font-size="50" font-weight="600" letter-spacing="-1.5">From final cut to <tspan fill="#C7A968">verified delivery.</tspan></text>
+<text x="64" y="176" fill="#C9CBD1" font-size="19">Seven handoffs. Each needs its own evidence. An unresolved gate stops the journey.</text>
+<g transform="translate(940,50)"><rect width="276" height="36" rx="18" fill="#C7A968" fill-opacity=".1" stroke="#C7A968" stroke-opacity=".6"/><circle cx="20" cy="18" r="4" fill="#C7A968"/><text x="34" y="23.5" fill="#C7A968" font-size="13" font-weight="600" letter-spacing="1.6">SIMULATION · SYNTHETIC</text></g>
+<rect x="110" y="328.5" width="1060" height="3" rx="1.5" fill="#2A2D35"/>
+<rect x="110" y="328.5" width="1060.0" height="3" rx="1.5" fill="url(#fill)"/>
+<circle cx="110.0" cy="330" r="32" fill="#0C0E13" stroke="#5E8FA8" stroke-width="2"/>
+<g transform="translate(96.0,316) scale(1.1667)" fill="none" stroke="#A9C6D6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 11-11-3-3L5 16z M14 6l3 3"/></g>
+<text x="110.0" y="392" text-anchor="middle" fill="#9A9DA6" font-size="12" letter-spacing="2">01</text>
+<text x="110.0" y="416" text-anchor="middle" fill="#C9CBD1" font-size="17" font-weight="600">Edit</text>
+<text x="110.0" y="438" text-anchor="middle" fill="#9A9DA6" font-size="13">Exact cut + hashes</text>
+<circle cx="286.7" cy="330" r="32" fill="#0C0E13" stroke="#5E8FA8" stroke-width="2"/>
+<g transform="translate(272.7,316) scale(1.1667)" fill="none" stroke="#A9C6D6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z M8.5 12l2.5 2.5 4.5-5"/></g>
+<text x="286.7" y="392" text-anchor="middle" fill="#9A9DA6" font-size="12" letter-spacing="2">02</text>
+<text x="286.7" y="416" text-anchor="middle" fill="#C9CBD1" font-size="17" font-weight="600">Approve</text>
+<text x="286.7" y="438" text-anchor="middle" fill="#9A9DA6" font-size="13">Scoped owner approval</text>
+<circle cx="463.3" cy="330" r="32" fill="#0C0E13" stroke="#5E8FA8" stroke-width="2"/>
+<g transform="translate(449.3,316) scale(1.1667)" fill="none" stroke="#A9C6D6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v14H4z M4 10h16 M8 3v4 M16 3v4 M12 13v3l2 1.5"/></g>
+<text x="463.3" y="392" text-anchor="middle" fill="#9A9DA6" font-size="12" letter-spacing="2">03</text>
+<text x="463.3" y="416" text-anchor="middle" fill="#C9CBD1" font-size="17" font-weight="600">Schedule</text>
+<text x="463.3" y="438" text-anchor="middle" fill="#9A9DA6" font-size="13">One saved job, read back</text>
+<circle cx="640.0" cy="330" r="32" fill="#0C0E13" stroke="#5E8FA8" stroke-width="2"/>
+<g transform="translate(626.0,316) scale(1.1667)" fill="none" stroke="#A9C6D6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></g>
+<text x="640.0" y="392" text-anchor="middle" fill="#9A9DA6" font-size="12" letter-spacing="2">04</text>
+<text x="640.0" y="416" text-anchor="middle" fill="#C9CBD1" font-size="17" font-weight="600">Verify post</text>
+<text x="640.0" y="438" text-anchor="middle" fill="#9A9DA6" font-size="13">Native post observed</text>
+<circle cx="816.7" cy="330" r="32" fill="#0C0E13" stroke="#5E8FA8" stroke-width="2"/>
+<g transform="translate(802.7,316) scale(1.1667)" fill="none" stroke="#A9C6D6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h12v8H9l-4 3v-3H4z M16 9h4v8h-1v3l-3-3h-5v-2"/></g>
+<text x="816.7" y="392" text-anchor="middle" fill="#9A9DA6" font-size="12" letter-spacing="2">05</text>
+<text x="816.7" y="416" text-anchor="middle" fill="#C9CBD1" font-size="17" font-weight="600">Comments</text>
+<text x="816.7" y="438" text-anchor="middle" fill="#9A9DA6" font-size="13">Triage; reply unsent</text>
+<circle cx="993.3" cy="330" r="32" fill="#0C0E13" stroke="#5E8FA8" stroke-width="2"/>
+<g transform="translate(979.3,316) scale(1.1667)" fill="none" stroke="#A9C6D6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6 M15 11l2 2 4-4"/></g>
+<text x="993.3" y="392" text-anchor="middle" fill="#9A9DA6" font-size="12" letter-spacing="2">06</text>
+<text x="993.3" y="416" text-anchor="middle" fill="#C9CBD1" font-size="17" font-weight="600">Follower check</text>
+<text x="993.3" y="438" text-anchor="middle" fill="#9A9DA6" font-size="13">Approved gate kept</text>
+<circle cx="1170.0" cy="330" r="44" fill="#C7A968" fill-opacity=".14"/>
+<circle cx="1170.0" cy="330" r="32" fill="#C7A968" stroke="#C7A968" stroke-width="2"/>
+<g transform="translate(1156.0,316) scale(1.1667)" fill="none" stroke="#05060A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z M14 3v4h4 M9 12h6 M9 16h4"/></g>
+<text x="1170.0" y="392" text-anchor="middle" fill="#9A9DA6" font-size="12" letter-spacing="2">07</text>
+<text x="1170.0" y="416" text-anchor="middle" fill="#F2EFE8" font-size="17" font-weight="600">Guide delivery</text>
+<text x="1170.0" y="438" text-anchor="middle" fill="#9A9DA6" font-size="13">Receipt, not trigger</text>
+<rect x="64" y="486" width="1152" height="58" rx="12" fill="#0B0D12" stroke="#2A2D35"/>
+<rect x="64" y="486" width="4" height="58" rx="2" fill="#C7A968"/>
+<text x="88" y="521" fill="#C9CBD1" font-size="16">Exceptions hold the flow: missing approval · duplicate response · follower status unknown · sensitive comment</text>
+<text x="64" y="594" fill="#9A9DA6" font-size="14">Instructions, templates and offline evidence checks. Not a scheduler, posting service or ManyChat replacement. Nothing here is sent.</text>
+</g></svg>

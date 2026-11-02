@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "context": null,
+  "status": "draft",
+  "script": {
+    "path": null,
+    "sha256": null,
+    "approval_evidence": null
+  },
+  "narration": {
+    "path": null,
+    "sha256": null,
+    "speaker": null,
+    "mode": "original_recording",
+    "approval_evidence": null
+  },
+  "captions": {
+    "path": null,
+    "sha256": null,
+    "script_sha256": null,
+    "review_evidence": null
+  },
+  "assets": [
+    {
+      "asset_id": "presenter",
+      "path": null,
+      "sha256": null,
+      "role": "presenter",
+      "identity": null,
+      "rights": "owned",
+      "rights_evidence": null
+    }
+  ],
+  "review": {
+    "inputs": {
+      "script_sha256": null,
+      "narration_sha256": null,
+      "captions_sha256": null,
+      "asset_sha256": {}
+    },
+    "voice_evidence": null,
+    "claims_evidence": null,
+    "privacy_evidence": null
+  },
+  "exports": [
+    {
+      "export_id": "vertical-draft",
+      "path": null,
+      "sha256": null,
+      "aspect_ratio": "9:16",
+      "width": 1080,
+      "height": 1920,
+      "duration_seconds": null,
+      "inputs": {
+        "script_sha256": null,
+        "narration_sha256": null,
+        "captions_sha256": null,
+        "asset_sha256": {}
+      },
+      "media_probe_evidence": {
+        "reference": null,
+        "reviewed_export": null
+      },
+      "playback_evidence": {
+        "reference": null,
+        "reviewed_export": null
+      },
+      "audio_evidence": {
+        "reference": null,
+        "reviewed_export": null
+      },
+      "caption_safe_area_evidence": {
+        "reference": null,
+        "reviewed_export": null
+      },
+      "disclosure_review_evidence": {
+        "reference": null,
+        "reviewed_export": null
+      }
+    }
+  ],
+  "experiment": {
+    "hypothesis": null,
+    "changed_element": null,
+    "comparison_window": null
+  },
+  "policy": {
+    "context": null,
+    "expected_speaker": null,
+    "expected_presenter": null,
+    "approval_evidence": null
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "schema_version": 2,
+  "revision": 0,
+  "updated_at": null,
+  "context": null,
+  "timezone": null,
+  "writer": {
+    "host": null,
+    "lease_expires_at": null
+  },
+  "service": {
+    "status": "not_recorded",
+    "owner": null,
+    "approval_evidence": null,
+    "start_at": null,
+    "expires_at": null,
+    "scope_evidence": null,
+    "cadence": {
+      "interval_hours": null,
+      "anchor_at": null
+    },
+    "window_hours": null
+  },
+  "releases": [
+    {
+      "release_id": "CAMPAIGN-PLATFORM-EDITION",
+      "campaign": "",
+      "topic_handoff": "",
+      "platform": "instagram",
+      "account": "",
+      "status": "planned",
+      "last_known_status": null,
+      "observed_status": "unknown",
+      "checked_at": null,
+      "evidence_level": "none",
+      "evidence_refs": [],
+      "asset": {
+        "source_path": null,
+        "approved_path": null,
+        "version": null,
+        "sha256": null,
+        "remote_url": null,
+        "remote_match_verified": false
+      },
+      "caption": "",
+      "title": null,
+      "caption_sha256": null,
+      "approval": {
+        "status": "pending",
+        "evidence": null,
+        "approved_at": null,
+        "bound_asset_sha256": null,
+        "bound_caption_sha256": null,
+        "actions": []
+      },
+      "planned_at": null,
+      "scheduled_at": null,
+      "actual_publication_at": null,
+      "actual_timestamp_raw": null,
+      "actual_timestamp_timezone_confirmed": false,
+      "scheduler": {
+        "name": null,
+        "job_id": null,
+        "provider_uuid": null,
+        "mode": null,
+        "provider_timezone": null,
+        "active_job_ids": [],
+        "verification_evidence": null
+      },
+      "actual_post_url": null,
+      "native_verification": {
+        "checked_at": null,
+        "evidence": null
+      },
+      "guide": {
+        "required": false,
+        "keyword": null,
+        "version": null,
+        "delivery_route": null,
+        "delivery_evidence": null,
+        "article_url": null,
+        "pdf_url": null,
+        "pdf_sha256": null,
+        "public_pdf_verified_at": null,
+        "article_journey_verified_at": null,
+        "evidence": null
+      },
+      "automation": {
+        "status": "not_applicable",
+        "configuration_version": null,
+        "flow_url": null,
+        "flow_id": null,
+        "reel_id": null,
+        "keyword": null,
+        "variants": [],
+        "saved_config_evidence": null,
+        "end_to_end_evidence": null,
+        "end_to_end_binding": null,
+        "verified_at": null,
+        "source_template": null,
+        "source_flow_id": null,
+        "trigger_scope": "exact_post",
+        "trigger_live": false,
+        "configuration_verified_at": null,
+        "follower_gate_verified": false,
+        "follower_gate_evidence": null,
+        "recheck_loop_verified": false,
+        "recheck_loop_evidence": null,
+        "destination_pdf_url": null,
+        "destination_pdf_sha256": null,
+        "end_to_end_pdf_sha256": null,
+        "public_acknowledgement": null
+      },
+      "comments": {
+        "latest_comment_check": null,
+        "last_attempt_at": null,
+        "cursor": null,
+        "coverage": "not_checked",
+        "missed_slots": [],
+        "next_due_at": null,
+        "window_end_at": null,
+        "unresolved": [],
+        "latest_success_evidence": null
+      },
+      "performance": {
+        "observed_at": null,
+        "window": null,
+        "retention": null,
+        "saves": null,
+        "shares": null,
+        "meaningful_comments": null,
+        "guide_clicks": null,
+        "evidence": null
+      },
+      "completion": {
+        "complete": false,
+        "publication": false,
+        "delivery": false,
+        "service": false,
+        "review": false,
+        "unresolved": []
+      },
+      "next_action": "Prepare finished output",
+      "owner": null
+    }
+  ],
+  "policy": {
+    "source_template": null,
+    "approval_evidence": null,
+    "next_step_text": null
+  }
+}

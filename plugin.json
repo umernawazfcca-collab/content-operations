@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "content-operations",
+  "version": "1.0.0-rc.1",
+  "description": "Review candidate: configurable content operations with offline tracker and production checks. No connectors, credentials or background service are included."
+}

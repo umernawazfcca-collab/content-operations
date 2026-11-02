@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="Simulated, synthetic walkthrough of the Content Operations release protocol. Nothing is scheduled, posted or sent.">
+<title>Content Operations — Release walkthrough (simulation)</title>
+<style>
+:root{
+  --carbon:#05060a;--pearl:#f2efe8;--champagne:#c7a968;--blue:#5e8fa8;--emerald:#0e3b2e;
+  --ink-2:#c9cbd1;--ink-3:#9a9da6;--line:#24262d;--line-2:#33363f;--panel:#0c0e13;--panel-2:#12151c;
+  --amber-bg:#2e2412;--amber-line:#7a5c2c;--amber-ink:#f0d9a8;--ok-bg:#0f2a21;--ok-line:#24563f;--ok-ink:#cfe5d8;
+  --radius:14px;--ease:cubic-bezier(.2,.7,.2,1);--dwell:5200ms;
+  --sans:"DM Sans",Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--carbon);color:var(--pearl);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(900px 480px at 85% -10%,#c7a96814,transparent 60%),radial-gradient(800px 600px at -10% 110%,#0e3b2e55,transparent 60%)}
+a{color:var(--champagne)}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--champagne);outline-offset:3px;border-radius:8px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--champagne);color:var(--carbon);padding:10px 14px;border-radius:8px;font-weight:600;z-index:5}
+.skip:focus{top:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{position:relative;max-width:1240px;margin:0 auto;padding:28px 32px 40px}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* Masthead */
+.mast{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:600;letter-spacing:.14em;font-size:12px;text-transform:uppercase}
+.mono{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--emerald),#08241c);border:1px solid #c7a96855;color:var(--champagne)}
+.flags{display:flex;gap:8px;flex-wrap:wrap}
+.flag{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border-radius:999px;border:1px solid var(--line-2);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.flag.sim{border-color:#c7a96880;color:var(--champagne);background:#c7a96812}
+.flag b{width:6px;height:6px;border-radius:50%;background:currentColor}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:40px;align-items:end;padding:44px 0 34px}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--champagne);font-weight:600}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.025em}
+h1{font-size:clamp(34px,5vw,60px);line-height:1.02;margin-top:14px;letter-spacing:-.04em}
+h1 span{color:var(--champagne)}
+.lede{color:var(--ink-2);margin:18px 0 0;max-width:56ch;font-size:17px}
+.legend{border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:#0a0c1199}
+.legend h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-bottom:12px}
+.legend ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:14px;color:var(--ink-2)}
+.legend li{display:flex;gap:10px;align-items:flex-start}
+.key{width:10px;height:10px;border-radius:3px;margin-top:6px;flex-shrink:0}
+
+/* Journey shell */
+.journey{border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,#0b0d12,#07080c);overflow:hidden}
+.bar{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--line-2);background:var(--panel-2);cursor:pointer;font-size:14px;font-weight:500;transition:border-color .2s var(--ease),background .2s var(--ease)}
+.btn:hover{border-color:#c7a96899}
+.btn:disabled{opacity:.38;cursor:not-allowed}
+.btn.primary{background:var(--champagne);color:var(--carbon);border-color:var(--champagne);font-weight:600;min-width:118px;justify-content:center}
+.btn.primary:hover{background:#d4b97c}
+.btn.icon{padding:0 13px}
+.paths{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.paths legend{float:left;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-right:6px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line-2);font-size:13px;color:var(--ink-2);transition:all .2s var(--ease)}
+.chip input:checked+span{background:#c7a9681c;border-color:var(--champagne);color:var(--pearl)}
+.chip input:focus-visible+span{outline:2px solid var(--champagne);outline-offset:2px}
+.chip .dot{width:7px;height:7px;border-radius:50%;background:var(--blue)}
+.chip.ex .dot{background:#d29b4a}
+
+/* Rail */
+.rail{position:relative;padding:26px 20px 8px}
+.track{position:absolute;left:calc(20px + 100%/14 - 40px/14);right:calc(20px + 100%/14 - 40px/14);top:49px;height:2px;background:var(--line-2);border-radius:2px}
+.fill{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--blue),var(--champagne));border-radius:2px;transition:width .6s var(--ease)}
+.fill.held{background:linear-gradient(90deg,var(--blue),#d29b4a)}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;position:relative}
+.node{width:100%;display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 2px 10px;background:none;border:0;cursor:pointer;color:var(--ink-3);text-align:center}
+.node .disc{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--panel);border:1.5px solid var(--line-2);transition:transform .35s var(--ease),border-color .3s,background .3s,color .3s}
+.node .num{font-size:11px;letter-spacing:.14em;color:var(--ink-3)}
+.node .name{font-size:13.5px;font-weight:500;line-height:1.25}
+.node:hover .disc{border-color:#c7a96899}
+.node.done .disc{border-color:var(--blue);color:#a9c6d6}
+.node.done .name{color:var(--ink-2)}
+.node[aria-current="step"] .disc{background:var(--champagne);border-color:var(--champagne);color:var(--carbon);transform:scale(1.08);box-shadow:0 0 0 6px #c7a9681f}
+.node[aria-current="step"] .name{color:var(--pearl)}
+.node.held[aria-current="step"] .disc{background:#d29b4a;border-color:#d29b4a;box-shadow:0 0 0 6px #d29b4a26}
+.node[aria-disabled="true"]{cursor:not-allowed}
+.node[aria-disabled="true"] .disc{border-style:dashed;color:#5d6069}
+.node[aria-disabled="true"] .name{color:#6d7079}
+.node:focus-visible{outline:none}
+.node:focus-visible .disc{outline:2px solid var(--champagne);outline-offset:4px}
+.timer{height:2px;margin:0 20px;background:transparent;overflow:hidden;border-radius:2px}
+.timer i{display:block;height:100%;width:100%;background:#c7a96880;transform-origin:left;transform:scaleX(0)}
+.timer.run i{animation:dwell var(--dwell) linear forwards}
+@keyframes dwell{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.notice{min-height:24px;margin:2px 20px 0;font-size:13px;color:var(--amber-ink)}
+
+/* Workspace */
+.work{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);border-top:1px solid var(--line);margin-top:10px}
+.stage{position:relative;padding:22px 26px 26px;background:radial-gradient(520px 300px at 50% 105%,#0e3b2e66,transparent 70%),var(--panel);border-right:1px solid var(--line);min-height:430px;display:flex;flex-direction:column}
+.stage-top{display:flex;justify-content:space-between;gap:12px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.stage-top b{color:var(--champagne);font-weight:600}
+.scene{flex:1;display:grid;place-items:center;padding-top:18px}
+.detail{padding:28px 30px;display:flex;flex-direction:column;gap:14px;background:#090b0f}
+.detail .step{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--champagne);font-weight:600}
+.detail h2{font-size:clamp(24px,2.6vw,32px);line-height:1.12}
+.detail p{margin:0;color:var(--ink-2)}
+.ev{border-top:1px solid var(--line);padding-top:14px}
+.ev h3{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-bottom:8px}
+.ev ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:14px;color:var(--ink-2)}
+.ev li{display:flex;gap:9px}
+.ev li:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--blue);margin-top:9px;flex-shrink:0}
+.state{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:10px;font-size:14px;border:1px solid var(--ok-line);background:var(--ok-bg);color:var(--ok-ink);margin-top:auto}
+.state.held{border-color:var(--amber-line);background:var(--amber-bg);color:var(--amber-ink)}
+.state strong{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px}
+
+/* Mock cards */
+.card{width:min(100%,420px);background:var(--pearl);color:#151a22;border-radius:14px;box-shadow:0 30px 60px -20px #000c,0 0 0 1px #ffffff14;overflow:hidden}
+.card-h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid #dcd8cf;font-size:11px;font-weight:700;letter-spacing:.1em;color:#4a5560}
+.card-h em{font-style:normal;padding:3px 8px;border-radius:999px;background:#e6e1d6;color:#5b4a26;font-size:10px}
+.card-b{padding:16px 18px 18px}
+.t{font-size:20px;font-weight:650;letter-spacing:-.02em;line-height:1.2;margin:0 0 10px}
+.small{font-size:12px;color:#55616c}
+.row{display:flex;align-items:center;gap:10px}
+.li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #e1ddd4;font-size:13px}
+.li:last-child{border-bottom:0}
+.li b{font-weight:600}
+.ok{color:#1d5a40}.warn{color:#8a5a17}
+.tag{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.04em;background:#dbe7df;color:#1c4a33}
+.tag.w{background:#f0e2c6;color:#6f4a12}.tag.b{background:#dce8ef;color:#24506a}
+.poster{position:relative;height:130px;border-radius:10px;background:linear-gradient(140deg,#0e3b2e,#0a2a21);color:var(--pearl);padding:16px;overflow:hidden}
+.poster b{position:relative;display:block;font-size:22px;line-height:1.1;letter-spacing:-.03em;max-width:220px}
+.poster svg{position:absolute;right:-18px;top:-10px;width:150px;height:150px;opacity:.9}
+.tl{display:flex;gap:3px;margin:12px 0 4px;position:relative}
+.tl span{height:16px;border-radius:3px;background:#5e8fa8;flex:1}
+.tl span:nth-child(3n){background:#c7a968}.tl span:nth-child(4n){flex:2}
+.tl i{position:absolute;top:-4px;bottom:-4px;width:2px;background:#151a22;left:62%}
+.bub{background:#e4e0d7;padding:10px 12px;border-radius:4px 12px 12px 12px;font-size:13px;margin:10px 0}
+.bub.me{background:var(--emerald);color:var(--pearl);border-radius:12px 4px 12px 12px;margin-left:34px}
+.bub small{display:block;font-size:10px;letter-spacing:.08em;font-weight:700;opacity:.85;margin-bottom:3px}
+.av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#163b30;color:#eee;font-size:11px;font-weight:600;flex-shrink:0}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:8px 0 10px}
+.cal span{height:26px;border-radius:5px;background:#e6e2d9;font-size:10px;display:grid;place-items:center;color:#6b7280}
+.cal span.on{background:var(--emerald);color:var(--pearl);font-weight:700}
+.flow{display:grid;gap:8px}
+.fnode{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:9px;background:#e9e5dc;font-size:13px}
+.fnode.gate{background:#0e3b2e;color:var(--pearl)}
+.branch{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ladder{display:grid;gap:7px}
+.rung{display:flex;gap:10px;align-items:flex-start;padding:9px 11px;border-radius:9px;border:1px solid #dcd8cf;font-size:13px}
+.rung small{display:block;color:#5f6b75;font-size:11.5px}
+.rung.proven{border-color:#9cc3ad;background:#e4efe8}
+.hold{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:#f3e6cb;color:#5e3f0e;margin-bottom:10px}
+.hold svg{width:30px;height:30px;stroke-width:1.8}
+
+/* Boundaries */
+.bounds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+.bound{border:1px solid var(--line);border-radius:var(--radius);padding:20px;background:#0a0c1199}
+.bound h3{font-size:15px;margin:10px 0 6px}
+.bound p{margin:0;color:var(--ink-3);font-size:14px}
+.bound .badge{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:#12151c;border:1px solid var(--line-2);color:var(--champagne)}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,Menlo,monospace;font-size:.92em;color:#b9cfdc}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;margin-top:28px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
+
+/* Motion: entrances only, never looping */
+.in-f{animation:inF .5s var(--ease) both}
+.in-b{animation:inB .5s var(--ease) both}
+.fade{animation:fade .45s var(--ease) both}
+@keyframes inF{from{opacity:0;transform:translateX(18px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes inB{from{opacity:0;transform:translateX(-18px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.timer{display:none}}
+
+/* Responsive */
+@media (max-width:980px){.hero{grid-template-columns:1fr;gap:24px;padding-top:32px}.work{grid-template-columns:1fr}.stage{border-right:0;border-bottom:1px solid var(--line);min-height:0}.bounds{grid-template-columns:1fr}}
+@media (max-width:720px){
+  .wrap{padding:18px 16px 32px}
+  .hero{padding:26px 0 22px;gap:18px}
+  .lede{font-size:15.5px;margin-top:12px}
+  .legend{padding:12px 14px}
+  .legend h2{display:none}
+  .legend ul{grid-template-columns:1fr 1fr;gap:8px 12px;font-size:12.5px;line-height:1.35}
+  .key{margin-top:3px}
+  .bar{padding:14px 16px}
+  .controls{width:100%;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto}
+  .btn.primary{min-width:0}
+  .rail{padding:22px 10px 6px}
+  .track{left:calc(10px + 100%/14 - 20px/14);right:calc(10px + 100%/14 - 20px/14);top:41px}
+  .node .disc{width:38px;height:38px}
+  .node .disc svg{width:17px;height:17px}
+  .node .name{font-size:11px}
+  .stage{padding:18px 16px 20px}
+  .detail{padding:22px 16px}
+  .card-b{padding:14px}
+}
+@media (max-width:480px){
+  .node .name{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .node .num{font-size:10px;letter-spacing:.06em}
+  .btn{padding:0 12px}
+  .flag{font-size:10.5px}
+  .branch{grid-template-columns:1fr}
+}
+@media (forced-colors:active){.node[aria-current="step"] .disc{border:3px solid CanvasText}.state,.flag,.chip span{border:1px solid CanvasText}}
+</style>
+</head>
+<body>
+<a class="skip" href="#journey">Skip to the walkthrough</a>
+<div class="wrap">
+  <header class="mast">
+    <div class="brand"><span class="mono" aria-hidden="true"><svg class="i" viewBox="0 0 24 24"><path d="M5 17L10 7l4 7 2-3 3 6"/><circle cx="18" cy="6" r="1.6"/></svg></span>Content Operations</div>
+    <div class="flags" role="note" aria-label="Simulation notice">
+      <span class="flag sim"><b></b>Simulation</span>
+      <span class="flag">Synthetic data</span>
+      <span class="flag">Nothing is scheduled, posted or sent</span>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div>
+      <div class="eyebrow">Release walkthrough</div>
+      <h1 id="hero-title">From final cut to <span>verified delivery.</span></h1>
+      <p class="lede">Follow one synthetic release through seven handoffs. Each stage needs its own evidence, and an unresolved gate stops the journey. Explore at your own pace or let it play.</p>
+    </div>
+    <aside class="legend" aria-labelledby="legend-title">
+      <h2 id="legend-title">How to read it</h2>
+      <ul>
+        <li><span class="key" style="background:var(--champagne)"></span>Current stage, simulated</li>
+        <li><span class="key" style="background:var(--blue)"></span>Earlier stage in this example</li>
+        <li><span class="key" style="background:#d29b4a"></span>Held at a gate: the flow stops here</li>
+        <li><span class="key" style="border:1.5px dashed #5d6069"></span>Locked until the gate is resolved</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="journey" id="journey" aria-labelledby="journey-title">
+    <h2 id="journey-title" class="sr">Interactive release journey (simulation)</h2>
+    <div class="bar">
+      <div class="controls" role="group" aria-label="Playback controls">
+        <button class="btn icon" id="prev" type="button" aria-label="Previous stage"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="btn primary" id="play" type="button" aria-pressed="false"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" id="playIcon"><path d="M8 5l11 7-11 7z"/></svg><span id="playLabel">Play</span></button>
+        <button class="btn icon" id="next" type="button" aria-label="Next stage"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+        <button class="btn" id="reset" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/></svg>Reset</button>
+      </div>
+      <fieldset class="paths" id="paths">
+        <legend>Path</legend>
+        <label class="chip"><input type="radio" name="path" value="approved" checked><span><i class="dot"></i>Approved example</span></label>
+        <label class="chip ex"><input type="radio" name="path" value="approval"><span><i class="dot"></i>Missing approval</span></label>
+        <label class="chip ex"><input type="radio" name="path" value="duplicate"><span><i class="dot"></i>Duplicate response</span></label>
+        <label class="chip ex"><input type="radio" name="path" value="follower"><span><i class="dot"></i>Follower unknown</span></label>
+        <label class="chip ex"><input type="radio" name="path" value="sensitive"><span><i class="dot"></i>Sensitive comment</span></label>
+      </fieldset>
+    </div>
+
+    <nav class="rail" aria-label="Release stages">
+      <div class="track" aria-hidden="true"><div class="fill" id="fill"></div></div>
+      <ol class="steps" id="steps"></ol>
+    </nav>
+    <div class="timer" id="timer" aria-hidden="true"><i></i></div>
+    <p class="notice" id="notice" role="status" aria-live="polite"></p>
+
+    <div class="work">
+      <div class="stage">
+        <div class="stage-top"><span>Illustrative interface · synthetic</span><b id="sceneLabel"></b></div>
+        <div class="scene" id="scene"></div>
+      </div>
+      <div class="detail" id="detail" aria-live="polite" aria-atomic="true">
+        <div class="step" id="stepLabel"></div>
+        <h2 id="title"></h2>
+        <p id="desc"></p>
+        <div class="ev"><h3>Evidence at this handoff</h3><ul id="evidence"></ul></div>
+        <div class="state" id="state"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bounds" aria-label="Capability boundaries">
+    <div class="bound"><span class="badge"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z M14 3v4h4 M9 12h6 M9 16h4"/></svg></span><h3>What the skill provides</h3><p>Portable instructions, synthetic templates, read-only tracker adaptation and offline evidence checks such as <code>check_records.py</code>. A passing check shows the record is well formed; it cannot prove the evidence is true.</p></div>
+    <div class="bound"><span class="badge"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/></svg></span><h3>What this page is not</h3><p>Not a scheduler, posting service, follower checker or ManyChat replacement. No account, platform or messaging service is connected, and nothing here was sent. External actions need separate authority and fresh evidence.</p></div>
+    <div class="bound"><span class="badge"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l5 5v8l-5 5H8l-5-5V8z M9 12h6"/></svg></span><h3>Exceptions stop the flow</h3><p>Missing approval, a duplicate response, unknown follower status and a sensitive comment each hold the journey at their gate. Selecting a later stage cannot skip past it.</p></div>
+  </section>
+
+  <footer>
+    <span>Original vector presentation · self-contained · no network requests, tracking or storage</span>
+    <span>Simulation of a documented process · not deployed · not a live integration</span>
+  </footer>
+  <noscript><p>This walkthrough needs JavaScript for its local controls. Read the README and workflow preview instead. Nothing is sent either way.</p></noscript>
+</div>
+
+<script id="walkthrough-model">
+/* Pure state model: no DOM access, so it can be tested without a browser. */
+var WalkthroughModel = (function () {
+  'use strict';
+  var LAST = 6;
+  var GATES = { approval: 1, duplicate: 4, follower: 5, sensitive: 4 };
+  function gateFor(path) { return Object.prototype.hasOwnProperty.call(GATES, path) ? GATES[path] : null; }
+  function limit(path) { var g = gateFor(path); return g === null ? LAST : g; }
+  function clamp(path, target) {
+    var t = Math.max(0, Math.min(LAST, Math.floor(Number(target)) || 0));
+    return Math.min(t, limit(path));
+  }
+  function isHeld(path, index) { return gateFor(path) === index; }
+  function isLocked(path, index) { return index > limit(path); }
+  function canAdvance(path, index) { return index < limit(path); }
+  return { LAST: LAST, GATES: GATES, gateFor: gateFor, limit: limit, clamp: clamp, isHeld: isHeld, isLocked: isLocked, canAdvance: canAdvance };
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+  var M = WalkthroughModel;
+  var $ = function (id) { return document.getElementById(id); };
+  var reduce = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+  var DWELL = 5200;
+  var ic = function (d, extra) { return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"' + (extra || '') + '><path d="' + d + '"/></svg>'; };
+  var P = {
+    edit: 'M4 20l4-1 11-11-3-3L5 16z M14 6l3 3',
+    approve: 'M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z M8.5 12l2.5 2.5 4.5-5',
+    schedule: 'M4 6h16v14H4z M4 10h16 M8 3v4 M16 3v4 M12 13v3l2 1.5',
+    verify: 'M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z M12 9.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z',
+    comments: 'M4 5h12v8H9l-4 3v-3H4z M16 9h4v8h-1v3l-3-3h-5v-2',
+    follower: 'M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6 M15 11l2 2 4-4',
+    guide: 'M6 3h8l4 4v14H6z M14 3v4h4 M9 12h6 M9 16h4',
+    lock: 'M6 11h12v9H6z M8.5 11V8a3.5 3.5 0 0 1 7 0v3',
+    hold: 'M8 3h8l5 5v8l-5 5H8l-5-5V8z M9 12h6',
+    check: 'M5 12.5l4.5 4.5L19 7',
+    dot: 'M12 12h.01',
+    play: 'M8 5l11 7-11 7z',
+    pause: 'M8 5v14 M16 5v14'
+  };
+  var card = function (head, tag, body) { return '<div class="card"><div class="card-h"><span>' + head + '</span><em>' + tag + '</em></div><div class="card-b">' + body + '</div></div>'; };
+  var li = function (a, b, cls) { return '<div class="li"><span>' + a + '</span><b class="' + (cls || '') + '">' + b + '</b></div>'; };
+  var rings = '<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="#c7a968" stroke-width=".8"/><circle cx="50" cy="50" r="28" fill="none" stroke="#c7a968" stroke-width=".8"/><circle cx="50" cy="50" r="16" fill="none" stroke="#5e8fa8" stroke-width=".8"/></svg>';
+  var poster = '<div class="poster">' + rings + '<b>Make the next step count.</b></div>';
+
+  var STEPS = [
+    { nav: 'Edit', icon: P.edit, title: 'Finish the exact cut.',
+      desc: 'Complete the asset and caption, then review captions, claims, accessibility and rights before anything goes for approval.',
+      evidence: ['Versioned export with asset and caption SHA-256', 'Rights-cleared media and reviewed claims', 'Edits stay additive; approved originals are preserved'],
+      state: ['Prepared', 'A polished asset is not permission to publish.'],
+      scene: function () { return card('EDITING DESK', 'Export v3', poster + '<div class="tl"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><i></i></div>' + li('Captions and accessibility', 'Reviewed', 'ok') + li('Claims and rights', 'Cleared', 'ok') + li('Asset hash', '3f9a…c21e')); } },
+    { nav: 'Approve', icon: P.approve, title: 'Approve this exact version.',
+      desc: 'The owner approves the finished asset, caption, account, posting time, destination and action. A material edit invalidates the approval.',
+      evidence: ['Approval bound to the final asset and caption hashes', 'Scope: account, release, time, destination and action', 'Style feedback or a draft review is not publication authority'],
+      state: ['Example approval recorded', 'In real use the authority itself must be verified.'],
+      scene: function () { return card('RELEASE REVIEW', 'Owner gate', '<div class="row" style="margin-bottom:8px"><span class="ok">' + ic(P.approve, ' style="width:30px;height:30px"') + '</span><p class="t" style="margin:0">Scoped approval</p></div>' + li('Asset + caption', 'v3 · exact hashes') + li('Account + release', 'demo · release-01') + li('Time + destination', 'bound') + '<span class="tag">SYNTHETIC APPROVAL</span>'); } },
+    { nav: 'Schedule', icon: P.schedule, title: 'One release, one scheduler.',
+      desc: 'An authorised operator uses the one configured scheduler, saves a single job and reads it back. An unclear result is reconciled, never retried blindly.',
+      evidence: ['Stable release ID and current ownership', 'Saved job ID re-read from the scheduler', 'Exact account, approved media and an offset-bearing time'],
+      state: ['Illustrative saved job', 'No scheduler is connected to this page.'],
+      scene: function () {
+        var days = ''; for (var d = 1; d <= 14; d++) days += '<span' + (d === 9 ? ' class="on"' : '') + '>' + d + '</span>';
+        return card('SCHEDULER HANDOFF', 'Simulated', '<div class="small">Synthetic publication instant</div><p class="t" style="font-size:30px;margin:4px 0 0">09:00 <span style="font-size:13px;color:#55616c">+04:00</span></p><div class="cal">' + days + '</div>' + li('Saved jobs for release-01', '1 · read back', 'ok') + li('Second scheduler', 'None', 'ok'));
+      } },
+    { nav: 'Verify post', icon: P.verify, title: 'Published is not verified.',
+      desc: 'Open the actual post on the platform. A scheduler "success" badge is not proof. Match the account, media, caption and disclosures to the approval.',
+      evidence: ['Actual post URL and a fresh native observation', 'Account, media and caption match the approved hashes', 'A missing queue item never proves publication'],
+      state: ['Illustrative native check', 'Publication and guide delivery are separate obligations.'],
+      scene: function () { return card('NATIVE POST CHECK', 'Demo post', '<div class="row" style="margin-bottom:10px"><span class="av">DA</span><div><b style="font-size:13px">demo-account</b><div class="small">Synthetic post</div></div></div>' + poster + li('Account · media · caption', 'Match', 'ok') + li('Scheduler status alone', 'Not proof', 'warn')); } },
+    { nav: 'Comments', icon: P.comments, title: 'Read the thread before replying.',
+      desc: 'Within authorised coverage, sort guide requests from genuine discussion, sensitive questions and spam. Check public and private history first.',
+      evidence: ['Exact post and comment target', 'Scope of the last successful scan', 'Separate keys for public replies and private delivery'],
+      state: ['Simulated reply only', 'The acknowledgement below is an unsent example. It does not deliver the guide.'],
+      scene: function () { return card('COMMENT TRIAGE', 'Exact post', '<div class="row"><span class="av">R</span><b style="font-size:13px">example-reader</b></div><div class="bub">Could I have the GUIDE, please?</div><div class="row" style="gap:6px;flex-wrap:wrap"><span class="tag b">GUIDE REQUEST</span><span class="tag w">HISTORY CHECKED FIRST</span></div><div class="bub me"><small>SIMULATED · NOT SENT</small>Please check your DMs for the next step.</div><div class="small">Next-step acknowledgement, not guide delivery.</div>'); } },
+    { nav: 'Follower check', icon: P.follower, title: 'Keep the approved gate.',
+      desc: 'On this illustrative Instagram route, the approved follower gate and recheck loop stay in place, bound to the exact reel, keyword and guide version.',
+      evidence: ['Approved source template and saved flow version', 'Exact-post binding and current gate evidence', 'Unknown follower status is not eligible'],
+      state: ['Example gate satisfied', 'Other platforms need their own supported routes.'],
+      scene: function () { return card('APPROVED ROUTE', 'Gate + recheck', '<div class="flow"><div class="fnode">' + ic(P.comments) + 'Guide requested on the exact reel</div><div class="fnode gate">' + ic(P.follower) + 'Follower status verified?</div><div class="branch"><div class="fnode"><span class="ok">' + ic(P.check) + '</span>Verified: continue</div><div class="fnode"><span class="warn">' + ic(P.hold) + '</span>Unknown: wait and recheck</div></div></div>'); } },
+    { nav: 'Guide delivery', icon: P.guide, title: 'Close with evidence, not a trigger.',
+      desc: 'A fired trigger or an accepted send is not delivery. Verify that the requested guide reached this recipient, and keep each level of proof distinct.',
+      evidence: ['Exact guide URL and SHA-256', 'Receipt bound to recipient, release and guide version', 'Unresolved failures and service obligations closed'],
+      state: ['Illustrative receipt', 'Simulated evidence. No guide was sent from this page.'],
+      scene: function () { return card('DELIVERY CHECK', 'Simulated receipt', '<div class="ladder"><div class="rung">' + ic(P.dot) + '<div>Trigger fired<small>Shows the flow started; proves nothing about delivery</small></div></div><div class="rung">' + ic(P.dot) + '<div>Send accepted<small>The service took the request; still not delivery</small></div></div><div class="rung proven"><span class="ok">' + ic(P.check) + '</span><div>Delivery evidence bound<small>Recipient, release and guide version match (simulated)</small></div></div></div>'); } }
+  ];
+
+  var EXCEPTIONS = {
+    approval: { title: 'Approval missing. Stop here.', label: 'Held: approval',
+      desc: 'The finished asset has no current approval for this account, time and action. Nothing is scheduled or published while you wait.',
+      evidence: ['Request the exact scoped approval from the owner', 'Independent review may continue', 'No external write is permitted'],
+      state: ['Held at approval', 'Scheduling and every later stage stay locked.'],
+      scene: function () { return card('APPROVAL REQUIRED', 'Held', '<div class="hold">' + ic(P.hold) + '<b>Not cleared to release</b></div>' + li('Asset v3', 'Ready', 'ok') + li('Approval for this action', 'Missing', 'warn') + '<span class="tag w">OWNER DECISION REQUIRED</span>'); } },
+    duplicate: { title: 'Already answered. Reconcile first.', label: 'Held: duplicate',
+      desc: 'This reader already has a reply or delivery recorded for this guide. A second comment is not permission to respond again.',
+      evidence: ['Check native and automation history by delivery key', 'An unknown earlier result stays pending', 'Never resend blindly'],
+      state: ['Held at comments', 'No second reply or DM. Later stages stay locked.'],
+      scene: function () { return card('RESPONSE HISTORY', 'Held', '<div class="hold">' + ic(P.hold) + '<b>Duplicate response blocked</b></div><div class="bub">GUIDE please (second request)</div>' + li('Existing delivery key', 'Match found', 'warn') + li('Earlier result', 'Unknown', 'warn')); } },
+    follower: { title: 'Unknown is not eligible.', label: 'Held: follower',
+      desc: 'Current follower status cannot be established. The approved gate and recheck loop stay in place; the route is not swapped for a link-first flow.',
+      evidence: ['Recheck only within the approved route', 'A test from an older configuration does not count', 'No guide is delivered while status is unknown'],
+      state: ['Held at follower check', 'Guide delivery stays locked.'],
+      scene: function () { return card('FOLLOWER CHECK', 'Held', '<div class="hold">' + ic(P.hold) + '<b>Status unknown</b></div>' + li('Approved recheck loop', 'Retained', 'ok') + li('Guide delivery', 'Not started', 'warn')); } },
+    sensitive: { title: 'A person owns this answer.', label: 'Escalated',
+      desc: 'A tax, legal, personal, pricing or commercial question goes to the owner. No position is improvised, no private fact exposed and no fee promised.',
+      evidence: ['Exact thread reference and escalation owner', 'Unresolved state recorded', 'Routine reply approval does not cover this'],
+      state: ['Escalated at comments', 'No reply sent. Later stages stay locked.'],
+      scene: function () { return card('COMMENT TRIAGE', 'Escalated', '<div class="hold">' + ic(P.hold) + '<b>Owner review required</b></div><div class="bub">Can you advise on my personal tax position?</div><span class="tag w">SENSITIVE QUESTION</span>'); } }
+  };
+
+  var path = 'approved', current = 0, timer = null, lastDir = 1;
+  var steps = $('steps');
+
+  STEPS.forEach(function (s, i) {
+    var item = document.createElement('li');
+    item.innerHTML = '<button type="button" class="node" data-step="' + i + '"><span class="disc">' + ic(s.icon) + '</span><span class="num">' + String(i + 1).padStart(2, '0') + '</span><span class="name">' + s.nav + '</span></button>';
+    steps.appendChild(item);
+  });
+  var nodes = Array.prototype.slice.call(steps.querySelectorAll('.node'));
+
+  function setPlaying(on) {
+    $('play').setAttribute('aria-pressed', on ? 'true' : 'false');
+    $('playLabel').textContent = on ? 'Pause' : 'Play';
+    $('playIcon').innerHTML = '<path d="' + (on ? P.pause : P.play) + '"/>';
+    var bar = $('timer');
+    bar.classList.remove('run');
+    if (on && !reduce.matches) { void bar.offsetWidth; bar.classList.add('run'); }
+  }
+  function stop() { clearTimeout(timer); timer = null; setPlaying(false); }
+  function schedule() { clearTimeout(timer); timer = setTimeout(tick, DWELL); setPlaying(true); }
+  function tick() {
+    if (!M.canAdvance(path, current)) { stop(); return; }
+    go(current + 1, false);
+    if (M.canAdvance(path, current)) schedule(); else stop();
+  }
+  function swap(el, html) {
+    el.innerHTML = html;
+    el.classList.remove('in-f', 'in-b', 'fade');
+    void el.offsetWidth;
+    el.classList.add(lastDir < 0 ? 'in-b' : 'in-f');
+  }
+
+  function render() {
+    var held = M.isHeld(path, current), ex = EXCEPTIONS[path], s = STEPS[current], d = held ? ex : s;
+    nodes.forEach(function (n, i) {
+      var locked = M.isLocked(path, i);
+      n.classList.toggle('done', i < current);
+      n.classList.toggle('held', M.isHeld(path, i));
+      if (i === current) n.setAttribute('aria-current', 'step'); else n.removeAttribute('aria-current');
+      n.setAttribute('aria-disabled', locked ? 'true' : 'false');
+      n.innerHTML = '<span class="disc">' + ic(locked ? P.lock : (M.isHeld(path, i) && i === current ? P.hold : STEPS[i].icon)) + '</span><span class="num">' + String(i + 1).padStart(2, '0') + '</span><span class="name">' + STEPS[i].nav + '</span>';
+      n.setAttribute('aria-label', 'Stage ' + (i + 1) + ' of 7: ' + STEPS[i].nav + (locked ? ' (locked until the gate is resolved)' : M.isHeld(path, i) ? ' (held at gate)' : i < current ? ' (earlier)' : ''));
+    });
+    var fill = $('fill');
+    fill.style.width = (current / M.LAST * 100) + '%';
+    fill.classList.toggle('held', held);
+    $('stepLabel').textContent = 'Stage ' + (current + 1) + ' of 7 · ' + (ex ? 'Exception path' : 'Approved example');
+    $('title').textContent = d.title;
+    $('desc').textContent = d.desc;
+    $('evidence').innerHTML = d.evidence.map(function (e) { return '<li>' + e + '</li>'; }).join('');
+    var st = $('state');
+    st.className = 'state' + (held ? ' held' : '');
+    st.innerHTML = ic(held ? P.hold : P.check) + '<span><strong>' + d.state[0] + '</strong>' + d.state[1] + '</span>';
+    swap($('scene'), d.scene());
+    $('sceneLabel').textContent = held ? ex.label : s.nav;
+    $('prev').disabled = current === 0;
+    $('next').disabled = !M.canAdvance(path, current);
+  }
+
+  function go(target, manual) {
+    var wanted = Math.max(0, Math.min(M.LAST, target));
+    var next = M.clamp(path, wanted);
+    lastDir = next >= current ? 1 : -1;
+    current = next;
+    $('notice').textContent = (manual && wanted > next) ? 'Stage ' + (wanted + 1) + ' is locked. This path is held at stage ' + (next + 1) + ' until the gate is resolved.' : '';
+    render();
+  }
+  var autoPending = !reduce.matches;
+  function manual(fn) { return function (e) { autoPending = false; stop(); fn(e); }; }
+  function autostart() { if (autoPending && !document.hidden) { autoPending = false; schedule(); } }
+
+  steps.addEventListener('click', manual(function (e) {
+    var b = e.target.closest('.node'); if (!b) return;
+    go(Number(b.getAttribute('data-step')), true);
+    nodes[current].focus();
+  }));
+  steps.addEventListener('keydown', function (e) {
+    var b = e.target.closest('.node'); if (!b) return;
+    var i = Number(b.getAttribute('data-step')), to = null;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') to = Math.min(M.LAST, i + 1);
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') to = Math.max(0, i - 1);
+    else if (e.key === 'Home') to = 0; else if (e.key === 'End') to = M.LAST;
+    if (to === null) return;
+    e.preventDefault(); stop(); go(to, true); nodes[current].focus();
+  });
+  $('prev').addEventListener('click', manual(function () { go(current - 1, true); }));
+  $('next').addEventListener('click', manual(function () { go(current + 1, true); }));
+  $('reset').addEventListener('click', manual(function () {
+    path = 'approved'; document.querySelector('input[name="path"][value="approved"]').checked = true; lastDir = -1; current = 0; $('notice').textContent = ''; render();
+  }));
+  $('paths').addEventListener('change', manual(function (e) {
+    path = e.target.value; lastDir = 1; current = 0; $('notice').textContent = ''; render();
+  }));
+  $('play').addEventListener('click', function () {
+    autoPending = false;
+    if (timer) { stop(); return; }
+    if (!M.canAdvance(path, current)) { lastDir = -1; current = 0; render(); }
+    schedule();
+  });
+  document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else autostart(); });
+
+  render();
+  // Self-advance once through, only when motion is allowed and the viewer has
+  // not taken control; never loops. A page opened in the background starts when shown.
+  autostart();
+})();
+</script>
+</body>
+</html>
