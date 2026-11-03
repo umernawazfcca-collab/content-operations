@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "brand_id": "",
+  "records": [
+    {
+      "policy_id": "",
+      "platform": "",
+      "account_ref": "",
+      "community": "",
+      "status": "unreviewed",
+      "checked_at": null,
+      "review_due_at": null,
+      "source_urls": [],
+      "posting_mode": "draft_only",
+      "comment_mode": "draft_only",
+      "promotion_rule": "",
+      "ai_content_rule": "",
+      "flair_rule": "",
+      "notes": ""
+    }
+  ]
+}

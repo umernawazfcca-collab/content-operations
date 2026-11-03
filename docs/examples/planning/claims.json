@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "brand_id": "synthetic-demo",
+  "revision": "claims-v1",
+  "claims": [
+    {
+      "claim_id": "demo-offline",
+      "status": "approved",
+      "statement": "This example is an offline demonstration.",
+      "conditions": "Applies only to the synthetic example.",
+      "source_ref": "synthetic-fixture",
+      "verified_at": "2026-11-03T09:00:00+04:00",
+      "valid_until": "2026-11-10T09:00:00+04:00",
+      "allowed_channels": [
+        "linkedin"
+      ],
+      "approval_evidence": "synthetic-only-claim-review"
+    }
+  ]
+}

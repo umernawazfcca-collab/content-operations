@@ -1,5 +1,7 @@
 # Release protocol
 
+Apply [Channel policy](channel-policy.md) before sending or scheduling. LinkedIn comments require human posting; routine-comment approval does not authorise automated submission. Other actions still require their own supported capability and existing approval.
+
 ## Prepare the finished output
 
 Read the topic's handoff, source assets and latest explicit corrections. Preserve sources. Create an additive platform export, cover, subtitle file where useful and exact short caption/title. Record duration, dimensions, audio/playback check, subtitle safe area, typo check, disclosure setting and source/approved hashes. Watch the beginning, representative middle and ending, with audio when available; label sampling or silent review accurately. Use synthetic finance examples or cleared source material. Escalate unsupported tax/legal claims to the appropriate review; do not invent a client story.

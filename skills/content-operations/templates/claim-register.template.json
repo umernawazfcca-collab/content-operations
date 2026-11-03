@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "brand_id": "",
+  "revision": "",
+  "claims": [
+    {
+      "claim_id": "",
+      "status": "proposed",
+      "statement": "",
+      "conditions": "",
+      "source_ref": "",
+      "verified_at": null,
+      "valid_until": null,
+      "allowed_channels": [],
+      "approval_evidence": ""
+    }
+  ]
+}

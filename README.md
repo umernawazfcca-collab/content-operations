@@ -70,3 +70,11 @@ This preview is for evaluation and contributions. It does not automatically publ
 [LinkedIn](https://www.linkedin.com/in/umer-nawaz/) · [Instagram](https://www.instagram.com/umer.aifinance/)
 
 Following is optional and is not required to download or use the skill.
+
+## Optional brand and content planning
+
+Add a private brand/claims snapshot and a structured brief before drafting. The optional offline checker rejects mismatched brands/revisions, stale or revoked selected claims and mismatched channel-policy records. A pass is drafting readiness only, never publication or delivery evidence.
+
+[Planning guide](skills/content-operations/references/content-planning.md) | [Synthetic runnable example](docs/examples/planning/README.md) | [Channel rules](skills/content-operations/references/channel-policy.md)
+
+Includes original creative-brief guidance, three bounded event playbooks and a weekly learning process. Populated brand data stays outside the package. No third-party guide templates or artwork are bundled. This change does not install a skill, alter a live service or extend previous host acceptance to the new package.

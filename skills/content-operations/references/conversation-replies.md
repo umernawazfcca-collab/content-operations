@@ -1,5 +1,7 @@
 # Conversation-aware reply drafting
 
+Apply [Channel policy](channel-policy.md) before sending or scheduling. LinkedIn comments require human posting; routine-comment approval does not authorise automated submission. Other actions still require their own supported capability and existing approval.
+
 Read this for replies to a specific comment or thread. Drafting permission does not permit sending, liking, reacting, following, moderating or starting monitoring.
 
 ## Identify the conversation

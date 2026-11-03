@@ -1,5 +1,7 @@
 # Guide delivery and comments
 
+Apply [Channel policy](channel-policy.md) before sending or scheduling. LinkedIn comments require human posting; routine-comment approval does not authorise automated submission. Other actions still require their own supported capability and existing approval.
+
 ## ManyChat, per approved Instagram campaign
 
 Use the exact published reel ID/URL, never all posts or an assumed next reel. Prepare the flow specification before release; bind only when the real reel is selectable and its owner/caption match. If a CTA promises delivery at publication, agree the manual coverage or revise the finished output before approval. Do not accept an untested delivery gap as working.

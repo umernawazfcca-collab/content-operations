@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "brand_id": "synthetic-demo",
+  "revision": "brand-v1",
+  "status": "approved",
+  "audience": "People learning an offline planning workflow",
+  "positioning": "A fictional demonstration, not a live product",
+  "language": "English",
+  "voice_examples": [
+    "Here is the missing step."
+  ],
+  "avoid": [
+    "guaranteed results"
+  ],
+  "forbidden_claims": [
+    "Live integration exists"
+  ],
+  "asset_policy_ref": "synthetic-owned-diagram-policy",
+  "approval_evidence": "synthetic-only-owner-decision"
+}

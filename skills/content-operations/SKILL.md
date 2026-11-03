@@ -8,6 +8,8 @@ description: >-
 
 A portable, offline-first workflow for finished content and follow-through. Substantive writing, brand voice, accounts and service authority are supplied by the operator, not inherited from this package. No account connection, publication permission or standing reply authority is bundled.
 
+Before drafting, optionally use [Content planning](references/content-planning.md) for explicit brand context, current proof and a structured brief. Before any external action, apply [Channel policy](references/channel-policy.md). Platform restrictions take precedence over a generic routine-reply scope: LinkedIn comments are drafted for human posting. Planning readiness never grants release authority.
+
 ## Start here on every run
 
 1. Read the current request, scope and approvals. Setup and review-only requests permit no scheduling, publication, uploads, messages, test comments or changes to live flows. A scheduler draft is an external write.

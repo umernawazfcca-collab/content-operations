@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — brand planning
+
+- Add optional brand, claim, brief and channel-policy templates with a read-only planning checker and synthetic example.
+- Reject cross-brand/revision mismatches, stale or revoked selected claims and invalid channel/community bindings.
+- Add creative briefing, bounded event playbooks and weekly learning guidance without another publisher or source of release authority.
+- Require human posting for LinkedIn comments and explicit community research for Reddit drafts.
+- Preserve release/delivery schemas, existing state, licences and historical host-test limits. New package host-import/live tests remain unperformed.
+
 ## 1.0.0-rc.1 — MIT preview (2 November 2026)
 
 Initial clean-history preview with portable instructions, synthetic templates, read-only tracker adaptation, evidence validators and the interactive workflow simulation. Exact packages passed bounded Claude Code/web and conversation-reported ChatGPT Work checks. Claude Desktop skill acceptance is not separately tested; Codex/Gemini execution remains unverified. Live integrations and full accessibility are not certified. See `docs/HOST_SUPPORT.md`.
