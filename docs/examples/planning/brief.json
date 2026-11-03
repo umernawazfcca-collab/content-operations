@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "brief_id": "synthetic-brief-1",
+  "brand_id": "synthetic-demo",
+  "brand_revision": "brand-v1",
+  "claims_revision": "claims-v1",
+  "status": "ready_for_drafting",
+  "evidence": [
+    {
+      "source_ref": "synthetic-calendar-gap",
+      "observed_at": "2026-11-03T09:00:00+04:00",
+      "captured_at": "2026-11-03T09:05:00+04:00",
+      "valid_until": "2026-11-04T09:00:00+04:00"
+    }
+  ],
+  "audience": "People learning an offline planning workflow",
+  "problem": "A draft lacks traceable source and review context.",
+  "goal": "Explain a reproducible planning handoff.",
+  "claim_ids": [
+    "demo-offline"
+  ],
+  "channels": [
+    {
+      "platform": "linkedin",
+      "account_ref": "synthetic-account",
+      "community": "",
+      "policy_ref": "demo-linkedin"
+    }
+  ],
+  "creative_spec_ref": "synthetic-six-panel-storyboard",
+  "hook_options": [
+    "The draft is ready. What supports it?",
+    "One brief, with its evidence attached.",
+    "Before scheduling, check the source."
+  ],
+  "call_to_action": "Try this offline example with synthetic data.",
+  "success_metric": "Number of substantive questions on the explanation, if later authorised for publication",
+  "production_effort": "One diagram and one short draft",
+  "release_id": null
+}

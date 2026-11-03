@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "brand_id": "synthetic-demo",
+  "records": [
+    {
+      "policy_id": "demo-linkedin",
+      "platform": "linkedin",
+      "account_ref": "synthetic-account",
+      "community": "",
+      "status": "reviewed",
+      "checked_at": "2026-11-03T09:00:00+04:00",
+      "review_due_at": "2026-11-10T09:00:00+04:00",
+      "source_urls": [
+        "https://news.linkedin.com/2026/authentic-content-and-conversations"
+      ],
+      "posting_mode": "provider_review_required",
+      "comment_mode": "human_only",
+      "promotion_rule": "Synthetic example only; no posting permission",
+      "ai_content_rule": "Human reviews accuracy and presentation",
+      "flair_rule": "Not applicable",
+      "notes": "Synthetic fixture: not live permission or account evidence."
+    }
+  ]
+}
